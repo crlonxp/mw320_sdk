@@ -3130,6 +3130,13 @@ void wlan_initialize_uap_network(struct wlan_network * net)
     net->ip.ipv4.addr_type = ADDR_TYPE_STATIC;
 }
 
+int wlan_abort_connect(void)
+{
+    wlan.scan_count      = WLAN_RESCAN_LIMIT;
+    wlan.reassoc_count   = WLAN_RECONNECT_LIMIT;
+    return WM_SUCCESS;
+}
+
 int wlan_add_network(struct wlan_network * network)
 {
     int pos = -1;
